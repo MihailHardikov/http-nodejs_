@@ -7,7 +7,7 @@ createServer((req, res) => {
     const name = url.searchParams.get('name') || 'World';
     const message = url.searchParams.get('message') || 'Welcome';
 
-    const responseMessage = `Hello ${name}! ${message}`;
+    const responseMessage = "Hello " + name + "! " + message + "!";
 
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write(responseMessage);
