@@ -5,7 +5,7 @@ createServer((req, res) => {
   if (req.method === 'GET') {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const name = url.searchParams.get('name') || 'World';
-    const message = url.searchParams.get('message') || 'Welcome';
+    const message = decodeURIComponent(url.searchParams.get('message') || '');
 
     const responseMessage = "Hello " + name + "! " + message + "!";
 
