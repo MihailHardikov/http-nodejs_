@@ -7,9 +7,11 @@ createServer((req, res) => {
     const name = url.searchParams.get('name') || 'World';
     const message = decodeURIComponent(url.searchParams.get('message') || '');
 
+
     const responseMessage = "Hello " + name + "! " + message + "!";
 
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.write(responseMessage);
     res.end();
   } else {
