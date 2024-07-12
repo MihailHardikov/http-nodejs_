@@ -4,12 +4,12 @@ import { URL } from 'url';
 createServer((req, res) => {
   if (req.method === 'GET') {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    const name = url.searchParams.get('name').replace(/['"]/g, '') || 'World';
-    const message = decodeURIComponent(url.searchParams.get('message') || '').replace(/['"]/g, '');
+    const name = url.searchParams.get('name') || 'World';
+    const message = decodeURIComponent(url.searchParams.get('message') || '');
 
 
-    const responseMessage = "Hello " + name + "! " + message + "!";
-
+    let responseMessage = "Hello " + name + "! " + message + "!";
+    responseMessage.replace(/['"]/g, '');
 
     res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.write(responseMessage);
