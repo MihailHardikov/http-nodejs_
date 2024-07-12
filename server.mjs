@@ -4,8 +4,8 @@ import { URL } from 'url';
 createServer((req, res) => {
   if (req.method === 'GET') {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    const name = url.searchParams.get('name') || 'World';
-    const message = decodeURIComponent(url.searchParams.get('message') || '');
+    const name = url.searchParams.get('name').replace(/['"]/g, '') || 'World';
+    const message = decodeURIComponent(url.searchParams.get('message') || '').replace(/['"]/g, '');
 
 
     const responseMessage = "Hello " + name + "! " + message + "!";
